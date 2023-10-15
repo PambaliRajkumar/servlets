@@ -1,0 +1,50 @@
+<!--
+	
+1. For /first url which class is mapped that class loading happens with class name i.e FirstServlet like 
+	Class.forName("FirstServlet"); 
+		=> So static block executes.
+		
+2. Instantiation Using newInstance() method => Class.forName("FirstServlet").newInstance(); creates object
+		=> So public zero arguments constructor executes.
+		
+3. public void init(ServletConfig config) throws ServletException
+	this method called by webcontainer in which call to init() method.
+
+Loading, Instantiation & Initialization happens only once while service() can be n no.of times as client requests.
+
+4. while stopping the server destroy() method called.
+
+-->
+
+<web-app>
+	<servlet>
+		<servlet-name>Servlet</servlet-name>
+		<servlet-class>FirstServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/first</url-pattern>
+	</servlet-mapping>
+	<!-- 
+	1. without load on startup => only with /first in the url => loading,instantiation & initialization
+		would happen.
+	While 1st customer should not wait for that long we keep load on startup value so that 
+	when the application starts then only loading,instantiation & initialization happens which increases productivity.
+	
+	Always after loading,instantiation & initialization only service method will be get executed no.of times
+	as clients hits url for a particular Servlet.
+	
+	-->
+
+	<servlet>
+		<servlet-name>GenericServlet</servlet-name>
+		<servlet-class>SecondServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GenericServlet</servlet-name>
+		<url-pattern>/second</url-pattern>
+	</servlet-mapping>
+</web-app>

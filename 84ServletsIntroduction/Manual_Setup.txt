@@ -1,0 +1,16 @@
+Inside tomcat\conf\server.xml => we have PORT NO
+Inside tomcat\conf\tomcat-users => we have username and password of the server.
+
+While starting of the server if gets error => means already running in background.
+To stop the server => go to services and stop the server from the services.
+
+ProjectName
+		|
+	   WEB-INF(folder)
+			|
+		   classes(folder) => consist of .class files
+		   web.xml	=> xml configuration files
+		   lib(folder) => consists of .jar files(3rd party api's)
+		   
+		|
+	   Source files (.java files)
